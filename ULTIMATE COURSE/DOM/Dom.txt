@@ -1,0 +1,124 @@
+Dom Manipulation
+Html k code ko js k zariye change krny ko dom manipulation kehty ha
+ 
+ See notes(Code with harry)
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+</head>
+<body>
+   <div>assasa</div
+ <script src="./variables.js"></script>
+</body>
+</html>
+
+ 1-first child
+jab hum js me document.firstChild karain gy tu div dny ki bjaiy hamai
+kahay ga k text node ha
+Is ki reason ye ha k body k foran bad space ha,aur ye space ko as a child leta ha,is lye 
+ye text return krta ha.(It takes space as it text child)
+Now after removing space,it will return div as its first child
+<body><div>assasa</div
+ <script src="./variables.js"></script>
+</body>
+
+2-lastChild 
+lastChild k case me agr hum ny space di b hui ha,tu ue isy consider ni kry ga,
+direct jo akhri tag hu ga,dy dy ga
+
+console.log(document.body.lastChild)
+In above html scenario,it will return script tag
+
+3-childNodes
+it will return all childs including text,comment,tag etc
+
+--------------
+Siblings
+Same parent k bacho ko siblings kehty has
+<body>
+<div>tayyab</div>
+<h1>tayyab</h1>
+</body>
+h1 is the nextSibling of div
+div is the previousSibling of h1
+------------
+parentNode & parentElement
+let a = document.querySelector("html");
+console.log(a.parentNode);  //html tag sy phly space ha,ye us space ko as a parent ly ga becoz it is a node,ye space/text ko b apni child manta ha is lye
+console.log(a.parentElement);//result:null bcoz ye srf element he mangta ha,is lye agr tu parent me koi element hai,tu taiq,wrna null return kr dy ga
+-----------------------------------------------------------------------------
+matches,closest,contains method
+
+<body> 
+    <h1 id="h11" class="box1">hi,tayayb</h1>
+        <h1 id="h12" class="box1">hi,tayayb</h1>
+        <script src="./variables.js"></script>
+    </body>
+
+1-matches
+<body> 
+    <h1 id="h11" class="box1">hi,tayayb</h1>
+        <h1 id="h12" class="box1">hi,tayayb</h1>
+        <script src="./variables.js"></script>
+    </body>
+let id1 = document.getElementById("h11");
+//ye check kry ga k id1 selector me koi .box1 ki koi class hai ya ni
+//if yes,returns true else false
+let check = id1.matches(".box1"); //u can also check id
+console.log(check); //result:true
+
+2-closest
+By closet method,element sab sy phly khud sy start krta ha k ye selector mere pas hai ya ni.
+Agr ni ha,tu apny parent k pas jata ha,agr waha b ni,tu phr us k parent k pas jata ha
+Ye apny siblings elements me check ni krta,blky apny andr search krny k bad ye apny parent me chly jata ha,phr waha sy us k parent me
+<body> 
+    <h1 id="h11" class="box1">hi,tayyab <span id="sp2">sp2</span> <span id="sp1">kesa</span>
+    </h1>
+
+    <script src="./variables.js"></script>
+    </body>
+
+Scenario 1:
+let id1 = document.getElementById("sp1");
+
+let check = id1.closest(".box1"); 
+console.log(check);  //khud me selector check krny k bad isy apny parent sy mil jai ga
+
+Scenario 2:
+let id1 = document.getElementById("sp1");
+
+let check = id1.closest("#sp1");
+console.log(check);  //apny ap ko he return kr dy ga kyu k phly ye khud me check krta ha
+
+Scenario 3:
+let id1 = document.getElementById("sp1");
+
+let check = id1.closest("#sp2"); //ye apny siblings me check ni krta thats why return null
+console.log(check);
+
+
+3-contains
+ye apny child elements me check kry ga k un me ye selector avaiable ha ya ni
+Returns true if yes else false
+<body> 
+    <h1 id="h11" class="box1">hi,tayyab <span id="sp2">sp2</span> <span id="sp1">kesa</span>
+    </h1>
+
+    <script src="./variables.js"></script>
+    </body>
+Scenario 1:
+let id1 = document.getElementById("h11");
+let sp2 = document.getElementById("sp2");   
+
+let check = id1.contains(sp2);//it will return true becoz h1 me #sp2  ka  selector ha 
+console.log(check); result:true
+
+Scenario 2:
+let id1 = document.getElementById("h11");
+let sp2 = document.getElementById("sp6");   
+
+let check = id1.contains(sp2);//it will return false becoz h1 me #sp6  ka koi  selector ni ha 
+console.log(check); result:false
+

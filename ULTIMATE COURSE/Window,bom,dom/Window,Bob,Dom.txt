@@ -1,0 +1,19 @@
+Window is a  global object and it provides a way to control browsers by javascript
+
+1)DOM(document object model)
+Ap k poray html page ko javascript object bna diya gya ha,which is known as document
+console.log(window.document);
+    or
+console.log(document);
+
+We can also see our html body by document
+console.log(document.body)
+
+2)BOM(Browser Object Model)
+
+Bom gives additional objects provided by the browser 
+It does not have a access to our document(html pages).Means hum apny html page me koi changes ni krty skty by Bom
+
+EXample:
+alert,prompt,confirm is a bom objects
+location is  a bom object

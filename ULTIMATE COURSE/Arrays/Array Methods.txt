@@ -1,0 +1,134 @@
+Arrays are mutable(original array can be changed)
+let arr = [23, 33, 44, 12];
+
+=>convert array to string
+it does not modify the original array
+let data = arr.toString();
+console.log(data, typeof data); //result 23,33,44,12 string
+
+
+=>join method
+it does not modify the original array
+it returns a  string
+let data = arr.join("_"); 
+console.log(data, typeof data); //result 23_33_44_12 string
+
+=>pop method
+ pop changes the original Array
+ It returns the popped element
+let data = arr.pop();
+console.log(data);result: 12
+
+=>push method
+ push changes the original Array
+ It returns the new array length
+let data = arr.push(56);
+console.log(data, arr);  //result 5 ,[23, 33, 44, 12, 56]
+
+=>shift method
+ shift changes the original Array
+ It removes the first element and return it
+let data = arr.shift();
+console.log(data, arr); //23 [33, 44, 12]
+
+=>unshift method
+ unshift changes the original Array
+ It add the first element and return length of total array 
+let data = arr.unshift(33);
+console.log(data, arr); //23 [33, 44, 12]
+
+=>delete(not a method,its a operator)
+delete is not a method,its a operator
+It only delete that value,ab us index ki jagah khali hu gai ha
+it does not change the length of array
+
+delete arr[0];
+console.log(arr); // [empty, 33, 44, 12]
+
+=>concat method
+let arr2 = [23, 33];
+concat is used to concat multiple arrays
+it does not modify the original array and returns a  new array
+
+let data = arr.concat(arr2);
+console.log(data); // [23, 33, 44, 12, 23, 33]
+
+=>reverse method
+It completly reverse the array
+It modifies the original array
+It returns the updated array
+arr.reverse();
+console.log(arr); result:[12, 44, 33, 23]
+
+=>splice method
+Old array ki values ko remove kr k un ki jagah new array ki values ko add kr dta ha
+It modifies the original array
+It returns the deleted values in array
+It has 3 arguments
+  a)1st argument ye ha k knsy index sy start krna ha.It starts with index 0 aur jo index ki value di gai huti ha,usko b add krta ha
+   b)2nd argument ye ha k kitni values ko remove krna ha
+   c)last argument me hum new values likhty ha
+let arr = [23, 33, 44, 12, 233, 444];
+let data=arr.splice(3, 3, 77, 78, 79);
+console.log(arr);result:[23, 33, 44, 77, 78, 79]
+console.log(data);//returns  deleted values  result:[12, 233, 444]
+
+Scenario:
+In case,hum ny 1st argument me kaha k 3 index sy start kro aur 3 values ko delete kr k new values ko add kr du 
+Ab agr array me last 3 values hu he na,srf 2 du,tab ye new given elements ko  waha add kr dy ga
+See example: 
+let arr = [23, 33, 44, 12, 233];
+arr.splice(3, 3, 77, 78, 79);
+console.log(arr); result:[23, 33, 44, 77, 78, 79]
+
+=>slice method
+It slice(cut) out a piece of array
+It does not modifies the original array
+
+Scenario
+1-If one value given
+Agr srf 1 he value di ha tu us index sy start hu k akhri index tak ki values ko separate array bna k dta ha
+let arr = [23, 33, 44, 12, 233, 444, 122];
+let data = arr.slice(3);
+console.log(data); result:[12, 233, 444, 122]
+2-If two values given
+Phli value tell us k kn sy index sy start krna ha aur 2nd value tells us k kn sy index tak values leni ha
+Important: 2nd value me jo index diya ha,us ko include ni krna
+let arr = [23, 33, 44, 12, 233, 444, 122];
+let data = arr.slice(3, 5); //3 sy 5 tak(5 index is not inclued)
+console.log(data); result:[12, 233]
+
+
+
+
+
+
+------------------------------------------------------------------------------------
+Sort method
+
+sort is used to sort array alphabatically
+It changes the original array
+
+let arr = [123, 33, 22, 424, 12];
+arr.sort();
+console.log(arr); result: [12, 123,22, 33, 424]
+
+in this output,we can observe that k ye alphabatically sort out kr rha ha
+wo in numbers ko string smaj rha ha
+means phly 1 sy start huny wali values aai,phir 2 sy and so on
+
+Now,
+To remove this conflict,we make a new method called compare
+It will sort our numbers as we want
+const compare = (a, b) => {
+  return a - b;
+};
+arr.sort(compare); //compare by default 2 values bhji jata ha aur sort krta rehta ha
+console.log(arr); result:[12, 22, 33, 123, 424]
+
+
+
+
+
+
+

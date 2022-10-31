@@ -1,0 +1,31 @@
+Finally apko ye ensure krta ha k mere andr apka code 100% chly ga chahy ap k try me koi issue aiy ya catch me.
+
+try {
+  console.log(first); //yaha b error ha
+} catch (error) {
+  console.log(error);
+  console.log(p); //yaha b 
+} finally {
+  console.log("I AM A BOY"); but dono error huny k bawajood finally chly ga
+}
+
+
+
+Scenario
+Agr try me apny kuch return b krwaya ha tab b chly ga
+const getInfo = () => {
+  try {
+    console.log("first");
+    return;
+  } catch (error) {
+    console.log(error);
+    console.log(p);
+  } finally {
+    console.log("I AM A BOY");
+  }
+};
+getInfo();
+Result:
+
+first
+ I AM A BOY

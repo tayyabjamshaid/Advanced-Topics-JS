@@ -1,0 +1,56 @@
+let data = [12, 22, 33, 55];
+
+forEach
+The forEach() method calls a function for each element in an array.
+ it has 3 parameters
+ a)arrayValue    b)index  c)original array
+Example 1:
+data.forEach((element)=>{
+    console.log(element*2)
+})
+Example 2:
+data.forEach((ele, index, array) => {
+  array[index] = ele * 2;
+});
+console.log(data);
+
+for of && for in
+for (let key in data) {
+  console.log(data[key]);
+}
+for (let key of data) {
+  console.log(key);
+}
+------------------------------------------
+Map ,filter & reduce(NOT MODIFY THE ORIGINAL ARRAYS)
+
+MAP:
+Map & foreach is same but 1 bigger difference is that map returns a array while forEach does not return anything
+Map ko tab use krty ha jab hum array me kuch changes krwana chahty ha while forEach tab use krty ha jab humny array k sath koi operation perform krwana huta ha
+
+let data = [12, 22, 33, 55];
+Example 1: 
+data.map((value, index, array) => {
+  console.log(value, index, array);
+});
+
+Example 2:(It returns a array)
+let hi = data.map((value, index, array) => {
+  console.log(value, index, array);
+  return value;
+});
+console.log(hi);
+
+Filter:
+
+Example 1:
+Array me less than 20 values show kr du
+let data = [12, 22, 33, 55];
+let hi = data.filter((data) => data < 20);
+console.log(hi);
+
+Reduce:
+The reduce() method returns a single value
+
+NOTE
+U CANNOT USE BREAK STATEMENT IN MAP,FOREACH LOOP,U CAN USE IT WITH SIMPLE FOR LOOP

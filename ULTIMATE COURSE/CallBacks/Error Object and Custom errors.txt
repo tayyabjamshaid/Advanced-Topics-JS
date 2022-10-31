@@ -1,0 +1,34 @@
+Error Object  and Custom Errors
+1-Error.name
+try {
+  console.log(first);
+} catch (error) {
+  console.log(error.name);Result:Refernce Error
+}
+
+
+2-Error.message
+try {
+  console.log(first);
+} catch (error) {
+  console.log(error.message);Result:first is not defined
+}
+
+3-Error.stack
+Sometimes error k sath ye property b mil jati ha
+try {
+  console.log(first);
+} catch (error) {
+  console.log(error.stack); Result:ReferenceError: first is not defined
+}
+
+4-HOW TO MAKE CUSTOM Errors
+try {
+  let age = prompt("Enter Age");
+  age = Number.parseInt(age);
+  if (age > 120) {
+    throw new ReferenceError("UNCLE YOU ARE NOT ELIGIBLE,TOO OLD");
+  }
+} catch (error) {
+  console.log(error); Result:ReferenceError: UNCLE YOU ARE NOT ELIGIBLE,TOO OLD
+}

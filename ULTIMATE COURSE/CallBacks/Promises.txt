@@ -1,0 +1,60 @@
+Promises
+=>Promise is promise of code execution
+=>The code either executes or fails,in both cases,coder will be notified
+
+Syntax of Promise:
+let promise = new Promise(function (resolve, reject) {       //resolve and reject ye dono callback functions jo by default js k promise me define kye huty ha
+  
+})
+
+=>promise ki 2 properties huti ha, 
+1-state 
+2-result but we cannot direct access it like promise.state etc,it will give undefined
+example:
+let promise = new Promise(function (resolve, reject) {
+  resolve(56);
+});
+console.log(promise);
+RESULT IN BROWSER:
+Promise
+[[Prototype]]: Promise
+[[PromiseState]]:"fulfilled"                 
+[[PromiseResult]]:56
+
+                                            State Property 
+State is initially pending,phr ya tu wo fullfilled hu jati ha ya reject hu jati ha
+
+                                            Result Property
+Initially result is undefined,then if promise resolves successfully give result,if not resolve successfully give error
+ ----------------------------------------
+ =>Jab tak promise resolve ni huty tb tak wo pending state me rhy gy
+ =>fulfilled ka matlab ye ha k ap promise sy nipat chuky hu,means ya  tu promise resolve hu jai ga ya tu wo reject hu jai ga,dono cases me wo fullfill hu ga
+ mainy pizza order kya,pizza agr a gya tu promise resolve ha aur agr ni aya u reject ha,dono cases me is ny promise ko fullfill kya ha
+ =>promise resolve huny pr value return krta ha aur reject huny pr error throw krta ha
+ =>Promises work as a parallel 
+ It means sab ek sath chly gy .Agr 50 promises ha,tu 50 k 50 he execute
+ hu jai gy aur jn sa jab execute hu gy tab apko notified kr diya jai ga
+
+ EXAMPLE:
+ let promise = new Promise(function (resolve, reject) {
+  console.log("I AM PENDING");
+  setTimeout(() => {
+    console.log("I AM Promise 1");
+    resolve("I AM RESOLVED");
+  });
+});
+let promise2 = new Promise(function (resolve, reject) {
+  console.log("I AM PENDING");
+  setTimeout(() => {
+    console.log("I AM Promise 2");
+    reject(new Error("I am Error"));
+  });
+});
+console.log(promise, promise2);
+//Both promises run at same time 
+I AM PENDING
+ I AM PENDING
+Promise {<pending>} Promise {<pending>}
+ I AM Promise 1
+ I AM Promise 2
+ Uncaught (in promise) Error: I am Error

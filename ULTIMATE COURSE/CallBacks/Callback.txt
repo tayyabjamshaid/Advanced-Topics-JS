@@ -1,0 +1,113 @@
+CallBack
+A callback is a javascript function that is passed in another function as a argument
+which will be execute when it will call in another function or jab hum kahain k outer function me ye kam complete hu tab  ye function chly(see below example 1)
+Note:
+=>Normally callback function hum tab bnaty ha jab hum outer function me chahty hu k ye kam huty he ye function chly
+In this scenario,callback act as  a ascyronous behaviour kyu k hum is me keh rhy ha jab tak ye action complete na hu jai,tab tak ye function call ni krna(example 1)
+=>Else agr hum simply callback ko execute kry tu ye scronous behaviour krta ha(Example 2)
+
+Example 1:
+function data(url, callback) {
+  let script = document.createElement("script");
+  script.src = url;
+  let a = 9 + 9;
+  script.onload = callback(a); //script jesy he load hu tu hamara function call kr du //yaha callback ascyronous behaviour kr rha ha jab tak script load ni hu gi tab tak ni chly ga
+  document.head.append(script);
+  console.log(document.head);
+}
+
+data("asassasa", (a) => {
+  console.log("first", a);
+}); 
+
+Example 2:
+function data(a,b, callback) {
+  let info=a+b;
+  callback(info)    //callback act as a scronous
+}
+
+data(5,6, (a) => {
+  console.log("first", a);
+}); 
+---------------------------------------------------
+
+Pyramid of Doom(Callback hell)
+function k andr function ko call kr rhy ha continuously,is sy code horizontally brhta jai ga aur ek situation pr a k ye hamary lye boht mushkil hu ga
+
+Example:
+function data(url, callback) {
+  let script = document.createElement("script");
+  script.src = url;
+  let a = 9 + 9;
+  script.onload = () => {
+    callback(null, "asaassasa");
+  };
+  script.onerror = () => {
+    callback(true);
+  };
+  document.head.append(script);
+  console.log(document.head);
+}
+
+data(
+  "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
+  function hello(error, src) {
+    if (error) {
+      console.log("ERROR");
+      return;
+    }
+    console.log(src);
+    data(
+      "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
+      function hello(error, src) {
+        if (error) {
+          console.log("ERROR");
+          return;
+        }
+        console.log(src, "src");
+        data(
+          "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
+          function hello(error, src) {
+            if (error) {
+              console.log("ERROR");
+              return;
+            }
+            console.log(src, "src");
+            data(
+              "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
+              function hello(error, src) {
+                if (error) {
+                  console.log("ERROR");
+                  return;
+                }
+                console.log(src, "src");
+                data(
+                  "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
+                  function hello(error, src) {
+                    if (error) {
+                      console.log("ERROR");
+                      return;
+                    }
+                    console.log(src, "src");
+                    data(
+                      "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",
+                      function hello(error, src) {
+                        if (error) {
+                          console.log("ERROR");
+                          return;
+                        }
+                        console.log(src, "src");
+                      }
+                    );
+                  }
+                );
+              }
+            );
+          }
+        );
+      }
+    );
+  }
+);
+
+

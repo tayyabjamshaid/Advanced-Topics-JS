@@ -1,0 +1,12 @@
+let x = 6;
+let y = "6";
+console.log("x == y", x == y); //it will only check the value     //true
+console.log("x != y", x != y); //it will only check the value     //false
+console.log("x === y", x === y); //it will check the value with datatype   //false
+console.log("x !== y", x !== y); //not equal value or  not equal type   //true becoz datatype are different
+!== explanation
+phly ye check kry ga k datatype agr same ni ha tu true dy ga,agr wo same hain then ye value ko check kry ga,value agr 
+different ha tu b ye true dy ga wrna false ,agr value aur datatype dono same hain then ye false dy ga
+if(!datatype  || !value){
+
+}

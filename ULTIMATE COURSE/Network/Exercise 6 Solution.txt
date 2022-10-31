@@ -1,0 +1,64 @@
+let namee = document.querySelector(".name");
+let age = document.querySelector(".age");
+let addTodoButton = document.querySelector(".addTodoButton");
+let showData = document.querySelector(".showData");
+let todoData = JSON.parse(localStorage.getItem("data"));
+let arr = [];
+let deleteButton;
+let id = 0;
+addTodoButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  arr.push({
+    id: Math.floor(Math.random() * (100 - 1 + 1) + 1),
+    name: namee.value,
+    age: age.value,
+  });
+  localStorage.setItem("data", JSON.stringify(arr));
+
+  showDataFun();
+});
+function showDataFun() {
+  if (arr.length == 0) {
+    arr.push(...todoData);
+  }
+  todoData = JSON.parse(localStorage.getItem("data"));
+  let dataa = todoData
+    .map((data) => {
+      return `<div><span>${data.name}</span><span> ${data.age}</span><button class="delete" onclick="deleteFunction(${data.id})">Delete</button></div>`;
+    })
+    .join("");
+  showData.innerHTML = dataa;
+}
+showDataFun();
+
+function deleteFunction(id) {
+  const index = arr.findIndex((key) => key.id === id);
+  arr.splice(index, 1);
+  localStorage.setItem("data", JSON.stringify(arr));
+  showDataFun();
+}
+-----------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+        
+</head>
+<body> 
+ <h1>Add Data</h1>
+ <form>
+  <label>Add Name</label>
+  <input type="text" class="name" />
+  <label>Add age</label>
+  <input type="text" class="age" />
+  <button class="addTodoButton">Add Todo</button>
+ </form>
+ <div class="showData">
+ </div>
+   <script src="./variables.js"></script>
+ </body>
+</html>

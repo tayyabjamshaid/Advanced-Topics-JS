@@ -1,0 +1,74 @@
+class Employee {
+    //jesy he class ka object bnta ha,constructor foran call hu jata ha
+    constructor(givenName, givenExperience, givenDivision) {
+        this.name = givenName;
+        this.experience = givenExperience;
+        this.division = givenDivision;
+    }
+
+    slogan(){
+        return `I am ${this.name} and this company is the best`;
+    }
+
+    joiningYear(){
+        return 2020 - this.experience;
+    }
+
+    static add(a, b){
+        return a + b;
+    }
+}
+
+class Programmer extends Employee{
+    constructor(givenName, givenExperience, givenDivision, language, github){
+        super(givenName, givenExperience, givenDivision);
+        this.language = language;
+        this.github = github;
+    }
+
+    favoriteLanguage(){
+        if (this.language == 'python'){
+            return 'Python';
+        }
+        else{
+            return 'JavaScript';
+        }
+    }
+
+    static multiply(a, b){
+        return a * b;
+    }
+}
+
+// harry = new Employee("Harry", 56, "Division");
+// console.log(harry.joiningYear());
+// console.log(Employee.add(34, 5))
+rohan = new Programmer("Rohan", 3, "Lays", "Go", "Rohan420")
+console.log(rohan)
+console.log(rohan.favoriteLanguage())
+console.log(Programmer.multiply(5, 7));
+-----------
+MY PRACTICE EXAMPLE
+class Employee {
+  constructor(name, age, email) {
+    this.name = name;
+    this.age = age;
+    this.email = email;
+  }
+  getData() {
+    console.log(this.name, this.age, this.email);
+  }
+}
+class NewEmployee extends Employee {
+  constructor(name, age, email, height, degree) {
+    super(name, age, email);
+    this.height = height;
+    this.degree = degree;
+  }
+  getData2() {
+    console.log(this.name, this.age, this.email, this.height, this.degree);
+  }
+}
+let data = new NewEmployee("tayyab", 33, "@gnm", "167cm", "cs");
+console.log(data);
+data.getData2();

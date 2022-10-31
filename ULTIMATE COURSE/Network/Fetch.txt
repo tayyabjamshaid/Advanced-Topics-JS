@@ -1,0 +1,80 @@
+Fetch
+Fetch is used to get data over internet
+ 
+In fetch,we can get our response in 2 stages
+
+1-In first stage,we have Response object in which we have
+ok,status,statusText,headers,body etc
+
+2-In second stage,all promises has been resolved and we can get our data in
+differnt forms like .text(),.json() etc
+
+Example:
+let p = fetch("https://jsonplaceholder.typicode.com/users");
+p.then((value) => {
+  console.log(value.status);
+  console.log(value.ok);
+  console.log(value);
+  return value.json();
+}).then((value) => {
+  console.log(value);
+});
+
+Scenario 1:
+Jab ek dfa hum ny data json mei read kr lia ab dobara us kp kisi form me read ni kr skty
+let p = fetch("https://jsonplaceholder.typicode.com/users");
+p.then((value) => {
+  console.log(value.status);
+  console.log(value.ok);
+  console.log(value);
+  console.log(value.text()); //ab yaha hum ny text me data read kr lia
+  return value.json(); //ab isy json me read ni kr skty
+}).then((value) => {
+  console.log(value);
+});
+
+---------------------------------------------------------
+Post request using Fetch
+Example 1:
+let options = {
+  method: "POST",
+  headers: {
+    "Content-type": "application/json",
+  },
+  body: JSON.stringify({
+    title: "tayyab",
+    body: "bhai",
+    userId: 1,
+  }),
+};
+fetch("https://jsonplaceholder.typicode.com/posts", options)
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+
+
+Example 2:
+Using async await
+const data = async () => {
+  let options = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      title: "tayyab",
+      body: "bhai",
+      userId: 1,
+    }),
+  };
+  let p = await fetch("https://jsonplaceholder.typicode.com/posts", options);
+  console.log("p", p);
+  let data = await p.json();
+  console.log(data, "data");
+  return data;
+};
+const data2 = async () => {
+  const info = await data();
+  console.log("info", info);
+};
+data2();
+

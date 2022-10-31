@@ -1,0 +1,26 @@
+localStorage
+
+=>localStorage me page refresh huny pr data lost ni huta
+=>Both key and value should be strings in setitem
+=>we can use json methods to store objects in localStorage
+  a)JSON.stringify  convert object into string
+  b)JSON.parse  convert string into object
+
+diff btw cookies and localStorage
+jab b client sy server pr koi request dalty ha,tu hr request pr cookies b server pr sath jata ha
+while localstorage me ye client ki request k sath server pr ni jata blky browser pr he rehta ha
+
+-------------
+Session Storage
+It is similar to localStorage but there are some differences
+Ye boht kam use huta ha
+
+we can use setItem,getItem,clear with this too
+
+IMP:
+diff btw Session storage and localStorage
+
+Session Storage me page refresh huny pr data save he rehta ha but agr isy mai dosri tab pr open kro tu is ki access waha ni huti
+while localStorage me uski access waha huti ha
+
+ 

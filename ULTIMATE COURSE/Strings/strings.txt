@@ -1,0 +1,51 @@
+//strings
+// defined as collection of characters
+It can be made by three Ways 
+1 - single quote
+let data = 'tayyab'
+2 - double quotes
+let data="tayyab"
+3-Template Literals
+Use  backticks instead of quotes.
+2 benifits of using It
+a)update the string(string interpolation)
+let data="usman"
+let data2=` kesa ha ${data}`;
+
+b)u can use single and double quotes in it
+let data2 = `kesa ha "taiq ho" g 'by'`;
+console.log(data2) //kesa ha "taiq ho" g 'by'
+
+-------------
+agr mai chahta hu k single quoted string me aur quote add kro then use /
+let fruit='bana/'na'
+console.log(fruit)//result:bana'na
+-------------------------------
+String Properties & Methods 
+Original string is immutable .It means original string ko ap kabhi change ni kr skty,ha updated changes ko ap new string me rkhwa skty ha
+general knowledge:arrays are mutable
+1-length (it is a property of string)
+=>let name="Harry"
+console.log(name.length)//result:5
+=>let name="Harr/"y";
+console.log(name.length)//result:6
+it considers /" one character
+
+Other String Methods:
+1->let data = `usman`;
+console.log(data.toUpperCase());
+2-let data = `usman`;
+let friend = `tayyab`;
+console.log(data.concat(" is  a friend of ", friend, " which is good"));
+3-let data="    tayyab    ";
+trim is used to remove spaces
+console.log(data.trim()) //result:tayyab
+-----------------------------------------------------------
+Problem
+I want to get only 1000 keyword,not all string
+let data = "Please give me Rs 1000";
+let len = "Please give me Rs ".length;
+console.log(data.slice(len));
+
+
+

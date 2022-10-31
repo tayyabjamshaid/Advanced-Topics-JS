@@ -1,0 +1,85 @@
+Other ways to insert data in dom
+1-insertAdjacentHTML
+Ye elements aur simple text dono ko accept krta ha
+<body> 
+    <div id="first">I am First</div>
+    <script src="./variables.js"></script>
+    </body>
+let data = document.getElementById("first");
+data.insertAdjacentHTML("beforeend", "<p>kesa</p>"); //div k end huny sy phly add kr du,sab sy last py a jai ga
+data.insertAdjacentHTML("beforebegin", "<p>kesa</p>");//div k start huny sy phly add kr du
+data.insertAdjacentHTML("afterbegin", "<p>kesa</p>");//div k start huty he add kr du
+data.insertAdjacentHTML("afterend", "<p>kesa</p>");//div k end huty he add kr du,it means div tag k foran bad a jai ga
+
+
+2-insertAdjacentText
+Ye simple text  ko accept krta ha,agr koi element sath likhaiy gy tu usy b as a string he print krwaiy ga
+
+Example 1:
+data.insertAdjacentText("afterbegin", "kesaaaa");
+output: 
+kesaaaa
+I am First
+
+Example 2:
+data.insertAdjacentText("afterbegin", "<p>kesaaaa</p>"); //print p tag as a string
+output: 
+<p>kesaaaa</p>
+I am First
+
+Like insertAdjacentHTML,we can also use beforebegin,beforeend,afterend with insertAdjacentText
+
+3-insertAdjacentElement
+insertAdjacentElement mei hum phly sy he tag bnaya huta ha,us ko specific div me add kaha krna ha,this methods tell us
+<body> 
+    <div id="first">I am First</div>
+    <span id="sp1">New Element</span> //ye humny phly sy he bnaya huwa ha
+    <script src="./variables.js"></script>
+    </body>
+    let data = document.getElementById("first");
+let sp1 = document.getElementById("sp1");
+
+data.insertAdjacentElement("afterbegin", sp1);
+Like insertAdjacentHTML,we can also use beforebegin,beforeend,afterend with insertAdjacentElement 
+-------------------------------------
+REMOVE method
+It is use to remove html element
+
+let sp1 = document.getElementById("sp1");
+sp1.remove();
+-----------------------------------
+ClassList & ClassName (SEE NOTES)
+-----------------------
+ setTimeOut && setInterval
+
+ setTimeOut
+=> setTimeOut  aisa function ha jo hum chahty ha k kuch time bad
+ execute hu
+ setTimeout(() => {
+  alert("Hello");
+}, 2000);
+     
+=>setTimeOut k last me hum time k ilawa aur b arguments dy skty ha
+const sum = (a, b, c) => {
+  console.log("Yes I m running", a + b + c);
+};
+setTimeout(sum, 5000, 2, 3, 4);
+
+=>NOTE:apny setTimeout kahi pr chlaya huwa ha,ab ap k pas  aisa scenario ha k ap chahty hu k setTimeout implement hu ne ha,then use clearTimeout
+let a = setTimeout(() => {
+  alert("Hello");
+}, 2000);
+
+clearTimeout(a);
+
+setInterval
+setInterval aisa function ha jis ko after a set time,hum bar bar chlana chaiy gy
+setInterval(()=>{
+    alert("TAYYAB)
+},3000)  //3 sec khatam huty he ye function bar bar 3 sec k farq sy chlta rhy ga(Infinite loop b keh skty ha)
+
+If want to stop this interval,use this way
+let b=setInterval(()=>{
+    alert("TAYYAB)
+},3000) 
+clearInterval(b)

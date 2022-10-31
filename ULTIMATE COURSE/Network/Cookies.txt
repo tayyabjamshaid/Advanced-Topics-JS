@@ -1,0 +1,57 @@
+ Cookies 
+ Cookies are small strings of data stored directly in browser
+
+ =>Point 1
+ agr mai Cookies me koi chez add krta hu,tu ye pichaly data ko b save rkhta ha
+ aur any waly new cookie ko b us me add kr dta ha
+ 
+  //i did this in bootstrap website
+ document.cookie="firstName=tayyab";
+
+ now u can see all cookies by,
+ alert(document.cookie);
+ Result:
+ firstName=tayyab; _ga=GA1.2.1687146828.1658487898;
+  _gid=GA1.2.1591226003.1666614563; _gat=1
+
+  =>Point 2:
+  mainy firstName nam ki cookie add ki,and then again same name ki cookie add kr di tu ye pichly ki value ko override kr dy gi
+
+Example:
+ document.cookie="firstName=tayyab";
+console.log(document.cookie)
+ document.cookie="firstName=usman";
+console.log(document.cookie)
+ 
+ -----------
+encodeURIComponent
+
+ let key = prompt("enter key");
+let value = prompt("Enter Value");
+
+ document.cookie = `${key}=${value}`;
+ console.log(document.cookie);
+
+Scenario 1:
+let suppose mainy key me value likhty huay ;= b likh dia like tay;=yab,is case me ye semicolon sy phly wali value ko he ly ga "tay",same in case of value
+to resolve this,we use encodeURIComponent
+
+let key = prompt("enter key");
+let value = prompt("Enter Value");
+key = encodeURIComponent(key);  //  tay;as;
+value = encodeURIComponent(value); //gf;hg
+document.cookie = `${key}=${value}`;
+console.log(document.cookie); Result:tay%3Bas%3B=gffggff%3Bhgg
+jaha jaha semicolon lkha ha waha  % ka syntax likha a jai ga  
+To decode this,we use decodeURIComponent
+console.log(decodeURIComponent(key));  //tay;as;
+
+
+Scenario 2:
+ek waqt me hum srf 1 cookie set kr skty ha,multiple ni
+document.cookie="name=tayyab;name=ali" 
+in this case ye srf phly waly name ko uta ly ga "name=tayyab" second waly ko ignore kr dy ga
+
+
+Note:
+15 sy 20 sy zyada cookies ko browser pr set ni krna chahiye,exact number hr browser ka separate huta ha

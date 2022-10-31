@@ -1,0 +1,101 @@
+Example 3 Solution
+const loadScript = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error("ERROR"));
+    }, 3000);
+  });
+};
+const dataa = async () => {
+  try {
+    let data = await loadScript();
+    console.log(data);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+dataa();
+
+Exercise 2 Solution:
+const loadScript = (src) => {
+  return new Promise((resolve, reject) => {
+    let script = document.createElement("script");
+    script.src = src;
+    document.body.append(script);
+    script.onload = () => {
+      resolve("Done");
+    };
+  });
+};
+const dataa = async () => {
+  let data = await loadScript(
+    "https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  );
+  console.log(data);
+};
+
+dataa();
+
+Exercise 1 Solution:
+const loadScript = (src) => {
+  return new Promise((resolve, reject) => {
+    let script = document.createElement("script");
+    script.src = src;
+    document.body.append(script);
+    script.onload = () => {
+      resolve("Done");
+    };
+  });
+};
+let data = loadScript("https://code.jquery.com/jquery-3.4.1.slim.min.js");
+data.then((value) => {
+  console.log(value);
+});
+
+Exercise 4 solution:
+
+const loadScript = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(10);
+    }, 3000);
+  });
+};
+const loadScript1 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(12);
+    }, 4000);
+  });
+};
+const loadScript2 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(22);
+    }, 6000);
+  });
+};
+const dataa = async () => {
+  try {
+    console.time("run");
+    let p1 = loadScript();
+    let p2 = loadScript1();
+    let p3 = loadScript2();
+    let data = await Promise.all([p1, p2, p3]);
+    console.log(data);
+    console.timeEnd("run");
+    // let data = await loadScript();
+    // let data1 = await loadScript1();
+    // let data2 = await loadScript2();
+    // console.log(data, data1, data2);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+dataa();
+
+
+Note:
+await k case me ye 13 sec ly ga kyu k jab tak ek promise resolve ni hu ga tab tak wo dosary pr ni jai ga while promise.all k case mei srf 6 sec ly ga kyu k jo last/lamba promise k resolve ka time ha wohi iska total time hu ga,In this scenario,it is loadScript2

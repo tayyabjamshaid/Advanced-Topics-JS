@@ -1,0 +1,41 @@
+const data = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Initializing Your Data");
+    }, 3000);
+  });
+};
+const data1 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Hacking Tayyab UserName");
+    }, 3000);
+  });
+};
+const data2 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("UserName found tayyab12");
+    }, 3000);
+  });
+};
+const data3 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Connecting to Facebook");
+    }, 3000);
+  });
+};
+const hacking = async () => {
+  let a = await data();
+  document.write(a, "<br>");
+  let b = await data1();
+  document.write(b, "<br>");
+
+  let c = await data2();
+  document.write(c, "<br>");
+
+  let d = await data3();
+  document.write(d);
+};
+hacking();

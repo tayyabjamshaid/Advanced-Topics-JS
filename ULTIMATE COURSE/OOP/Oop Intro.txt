@@ -1,0 +1,6 @@
+Oop is dependent of 4 pillars
+
+Abstraction
+Polymorphism
+Encapsulation
+Inheritance

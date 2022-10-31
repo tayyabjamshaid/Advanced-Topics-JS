@@ -1,0 +1,100 @@
+ Example 1
+ let i = 0;
+ while (i < 10) {
+   console.log(i);
+   ++i;
+ }
+
+ Example 2
+ const cars = ["BMW", "Volvo", "Saab", "Ford"];
+ let i = 0;
+ let sum = "";
+ while (i < cars.length) {
+   sum += cars[i];
+   ++i;
+ }
+ console.log(sum);
+
+Example 3
+ let animal = "dog";
+ let runTime = true;
+ while (runTime == true) {
+   let inp = prompt("Enter Animal Name");
+   if (inp === animal) {
+     alert("Congrats,You Guess Write");
+     runTime = false;
+   } else {
+     alert("Sorry,Your Guess wrong,Try Again");
+   }
+ }
+
+1st 2 questions solution of while loop task task # 4 
+Example 4
+ let runTime = true;
+ const checkAge = (age) => {
+   if (age >= 18) {
+     return true;
+   } else {
+     return false;
+   }
+ };
+ while (runTime == true) {
+   let age = prompt("Enter Age");
+   age = Number.parseInt(age);
+   if (checkAge(age)) {
+     alert("Yes you can drive");
+   } else {
+     alert("No you cannot drive");
+   }
+   runTime = confirm("Do you want to take input again..?");
+ }
+
+Example#5
+ let randomNumber = Math.random() * 100;
+ randomNumber = Number.parseInt(randomNumber);
+ console.log(randomNumber);
+ let condition = true;
+ let score = 100;
+ while (condition == true) {
+   score = score - 1;
+   let inp = prompt("Enter Guess Number");
+   inp = Number.parseInt(inp);
+   if (inp == randomNumber) {
+     alert(
+       `Congratulation,You Guess the right Number,Your Score is ${100 - score}`
+     );
+     condition = false;
+   } else if (randomNumber < inp && inp < 100) {
+     alert("Sorry,You Guess the greater Number");
+   } else if (randomNumber > inp && inp < 100) {
+     alert("Sorry,You Guess the lesser Number");
+   } else {
+     alert("Enter Number btw 1-100");
+   }
+ }
+
+ Example # 6
+ var things = ["Snake", "Water", "Gun"];
+var thing = things[Math.floor(Math.random() * things.length)];
+console.log(thing);
+let i = 0;
+while (i < 3) {
+  let inp = prompt("Enter Value");
+  if (inp == "Snake" && thing == "Water") {
+    alert(`In the battle of Snake and water,snake wins `);
+  } else if (inp == "Snake" && thing == "Gun") {
+    alert(`In the battle of Snake and gun,gun wins `);
+  } else if (inp == "Water" && thing == "Gun") {
+    alert(`In the battle of Water and gun,water wins `);
+  } else if (inp == "Water" && thing == "Snake") {
+    alert(`In the battle of Water and Snake,snake wins `);
+  } else if (inp == "Gun" && thing == "Water") {
+    alert(`In the battle of Water and gun,water wins `);
+  } else if (inp == "Gun" && thing == "Snake") {
+    alert(`In the battle of Gun and Snake,gun wins `);
+  } else {
+    alert("Tie");
+  }
+  ++i;
+}
+

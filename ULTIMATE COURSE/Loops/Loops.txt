@@ -1,0 +1,58 @@
+Simple for loop
+Example 1:
+let sum = 0;
+for (let i = 2; i < 8; i++) {
+  sum += i;
+}
+console.log(sum);
+first it prints 2
+then 5
+then 9
+then 14
+then 20
+then 27
+
+Example 2:
+We can also use for loop in objects
+let obj = { usman: 89, tayyab: 78, amir: 100 };
+for (let i = 0; i < Object.keys(obj).length; i++) {
+  console.log(
+    "Marks of " + Object.keys(obj)[i] + " are " + obj[Object.keys(obj)[i]]
+  );
+}
+
+-----------------------
+for in loop
+(We can also use for in loops in obj as well as in array)
+let obj={
+    harry:90,tayyab:89,usman:100
+}
+for (let key in obj){
+    console.log("Marks of "+key+" are"+obj[key])
+}
+
+----------------------------
+for of loop
+if you want to get value of array/strings ,use this
+1st example:
+let obj = [12, 121, 211];
+
+for (let a of obj) {
+  console.log(a);
+}
+
+2nd example:
+let obj = [
+  {
+    marks: 90,
+  },
+  {
+    marks: 100,
+  },
+  {
+    marks: 89,
+  },
+];
+for (let a of obj) {
+  console.log(a.marks);
+}

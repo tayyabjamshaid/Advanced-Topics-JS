@@ -1,0 +1,34 @@
+ =>Hum kisi b function ko async bna skty ha aur k andr promises ko await  krwa skty ha
+ =>AN async function always returns a promise
+ =>jab b kisi function k sath async likhy gy tu js engine ye ensure/man ly ga k ab ye function promise return kry ga
+
+ Example:
+ async function harry() {
+  let delhi = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("27 deg");
+    }, 1000);
+  });
+  let karachi = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("36 deg");
+    }, 2000);
+  });
+  let delhiInfo = await delhi; //jab tak ye promise resolve ni hu jata tab tak next line of code ni chly ga
+  let karachiInfo = await karachi;
+
+  console.log(delhiInfo, karachiInfo);
+    return { delhiInfo, karachiInfo };
+
+}
+console.log(harry()); //as we discuss,async function always promise return kry ga
+
+harry();
+
+//if want to get return values of function then resolve this function promise
+harry().then((value) => {
+  console.log(value);
+});
+
+
+

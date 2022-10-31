@@ -1,0 +1,33 @@
+let age = 25;
+
+switch (true) {
+  case age > 10 && age < 20:
+    console.log("Yes age exist in 20");
+    break;
+  case age > 20 && age < 30:
+    console.log("Yes age exist in 30");
+    break;
+  default:
+    console.log("Sorry");
+}
+---
+problem 2 (check age is divisible by 2 and 3)
+let age = 27;
+age%2==0 means age ko 2 pr divide krny pr reminder 0 ha tu chlo
+// if (age % 2 == 0) {
+//   console.log("YES IM even");
+// } else if (age % 3 == 0) {
+//   console.log("YES IM odd");
+// } else {
+//   console.log("kesa");
+// }
+switch (true) {
+  case (age % 2==0):
+    console.log("Even");
+    break;
+  case (age %3==0):
+    console.log("odd");
+    break;
+  default:
+    console.log("Sorry");
+}

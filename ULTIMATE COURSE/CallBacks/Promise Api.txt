@@ -1,0 +1,134 @@
+Promise Api
+It has some methods
+1-Promise.all
+
+let promise = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve(5);
+  }, 2000);
+});
+let another = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve(7);
+  }, 8000);
+});
+let promise3 = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve(9);
+  }, 3000);
+});
+
+let promises = Promise.all([another, promise, promise3]);  
+promises.then((value) => {
+  console.log(value);      [7,5,9]   //result is pattern sy aiy ga jo  promise.all me jis promise ko phly likha,usi ki value result ki array me phly aiy gi
+});
+
+Note:
+In this scenario,Promise.all k resolve ki total timing 8s hu gi kyu k sab sy late call usy he kya gya ha 
+Agr koi promise  error throw kr dta ha tu ye baqi promises k result ko b ignored kr k srf error he show krwaiy ga
+
+2-Promise.allSettled
+Agr kisi promise me koi error aya b ha tu b hamaray dosary results ko show krwao
+let promise = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve(5);
+  }, 2000);
+});
+let another = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve(7);
+  }, 2000);
+});
+let promise3 = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    reject(new Error("HI"));
+  }, 2000);
+});
+
+let promises = Promise.allSettled([another, promise, promise3]);
+promises.then((value) => {
+  console.log(value);
+});
+Result:
+(3) [{…}, {…}, {…}]
+0:{status: 'fulfilled', value: 7}
+1:{status: 'fulfilled', value: 5}
+2:{status: 'rejected', reason: Error: HI at http://127.0.0.1:5500/variables.js:13:12}
+
+3-Promise.race
+Jnsa promise phly resolve hu jai,uska result phly show kr du
+
+let promise = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve(5);
+  }, 2000);
+});
+let another = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve(7);
+  }, 4000);
+});
+let promise3 = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve(9);
+  }, 1000);
+});
+
+let promises = Promise.race([another, promise, promise3]);   
+promises.then((value) => {
+  console.log(value);
+});
+//promise3 sab sy phly resolve hu ga,is lye uski value sab sy phly show krwa dy ga
+Result: 9
+
+Note:
+In this scenario,agr promise3 error throw krta ha tab ye result me error throw krwa dta ha
+upr wala baqi sara code same,srf promise3 me error throw krwa diya ha
+let promise3 = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    reject(new Error("HI"));
+  }, 1000);
+});
+In result ,it will show error
+
+4-Promise.any
+It is same like race but the difference is that race me sab sy phly resolve huny wala promise me agr error aiy tu wo error throw kr dta ha but any k case me agr error aya
+tu us promise ko chor k agly resolve promise ka result show krwa dta ha
+
+let promise = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve(5);
+  }, 2000);
+});
+let another = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve(7);
+  }, 4000);
+});
+let promise3 = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    // resolve(7);
+    reject(new Error("New Error"));
+  }, 1000);
+});
+
+let promises = Promise.any([another, promise, promise3]);
+promises.then((value) => {
+  console.log(value);
+});
+
+5-Promise.resolve 
+promise.resolve ek value lta ha and then us promise ko resolve kr k value show krwa dta ha
+let promise = Promise.resolve(6);
+promise.then((value) => {
+  console.log(value);
+});
+
+6-Promise.reject
+promise.reject ek value lta ha and then us promise ko reject kr k error show krwa dta ha
+let promise = Promise.reject(6);
+promise.then((value) => {
+  console.log(value);
+});
+
+

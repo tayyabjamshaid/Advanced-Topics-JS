@@ -1,0 +1,161 @@
+How Js Works?
+Js is a interperated language(means code line by line check huta ha)
+Har browser k pas apna js engine huta ha jis k through wo js k code ko run krta ha
+In Chrome,it has v8 engine while in firebox,it has spider monkey engine.Safari browser has safari engine
+
+---------------
+STEPS OF CODE RUNNING IN BROWSER
+1-Parser
+When we run js in our browser,js engine in browser first parse it.
+Parse means line by line code ko check krta ha k kahi is me koi syntax error wagaira tu ni ha
+Agr error hai tu foran error throw kr dta ha
+
+2-AST(ABSTRACT SYNTAX TREE)
+Jab parser apka code verify kr dta ha k is me koi syntax issue ni ha,
+then ye hamary code ko ek data structure me convert kr dta ha jisy AST kehty ha
+(SEE PIC OF DATA STRUCTURE IN FOLDER)
+
+3-Conversion to Machine code
+AST me convert huny k bad js engine hamary code ko machine ki language me translate kr dta ha
+
+4-Code Runs
+ machine language me convert hu huny k bad jo file hamai milti ha,us file ko read kr k hamara processor smajta ha k us ny kya krna ha aur phr code run hu jata ha
+ --------------------------------------
+Execution Context
+
+=>It is the environment in which our code is executed and evaluated
+=>Before executing any code,js engine creates the global execution context(default) which is window object
+=>Window is our global execution context 
+=>Hamara pora ka pora code is k andr rehta ha
+=>Hamary variables and function that is not inside any function,wo b is global execution context(window object) me huta ha
+=>Variables/functions avaiable in function will not srore in window object
+=>Jab hum function ko call/execute krty ha tab hr dfa function ki call pr execution context bnata ha
+=>In simple,global execution context is just like Execution context but the differ is that global execution context is default
+=>Jab function ko call krny pr execution context bna,jab wo pora function implement hu jai ga tab wo us function ka execution context ko remove kr dy ga
+(SEE PIC OF EXECUTION CONTEXT)
+EXAMPLE:
+function a(){  
+let a =90;
+b();
+console.log(a)
+}
+function b(){
+
+let b =91;
+console.log(b)
+c();
+
+}
+function c(){
+
+let c =92;
+console.log(c)
+}
+a(); 
+Output:91 92  90
+HOW IT WORk:
+1-Hum ny jesy he is program ko run kya,phly global execution context (window ka obj bna)
+2-Phr a ko call krny pr a ka execution context bna
+3-a k andr b ko call krny pr b ka execution context bna aur console statement chli
+4-b k andr c ko call krny pr c ka execution context bna aur console statement chli
+5-c ka function jab execute hu gya tu is ka execution context remove hu gya then it moves to b,b jab completly execute hu gya us ka execution context b khatam hu jai ga
+6-Phr jab a k andr jai ga tu console statement chli and a ka execution context b remove hu gya
+7-At last,it moves to global execution context
+---------------------------------------------------------------
+Execution Context has 2 phases
+1-Creation Phase 
+It is divided in 3 parts
+a)Variable object
+b)Scope Chain
+c)this
+Sab sy phly variable objects ko create kya jata ha 
+After that,Scope chain ko create kya jata ha 
+After that,ye determine kya jata ha k ye this variable kis ko represent kr rha ha
+
+                                Variable object
+=>Sab sy phly variable object bnta ha,phr jab code run huta ha,tu js engine ye dkhta ha k functions/variables ko kaha kaha declare kya ja rha ha
+=>Har function k ek property  ko variable object me create kya jata ha,jo k us function ko pointout kr rhi huti ha
+=>Har variable ki property ko variable object me create kya jata ha,jis ko undefined rkha jata ha
+Example start:
+a(); //hi bcoz function property nichay diye huay function ko sath sath point b kr rhi ha
+console.log(b); //undefined   bcoz is ki property me abi undefined rkha gya ha
+var b=99;
+function a(){
+    console.log("hi)
+}
+Example end.
+
+Hoisting ko hoisting nam isi wajah sy diya gya ha kyu k ye code execution sy phly he hamary variables/functions ko top pr declare kr dia jata ha
+      
+                                 Function Hoisting
+Functions  are moved and declared on top before code execution
+Jo Functions function keyword sy bny gy,srf us pr hoisting kam kry gi
+Scenarios:
+1=>
+a(); //hi bcoz function property nichay diye huay function ko sath sath point b kr rhi ha
+function a(){
+    console.log("hi)
+}
+2=>
+a();
+(function a(){
+    console.log("hi)
+})  //here it will give reference error that a is not defined bcoz hoisting srf variables/functions ka he huta ha,paranthis() ka nahi
+
+3=> 
+Function expression me function hoisting kam ni krti
+Case 1:
+sum();  //it will give typeerror that sum is not defined
+var sum=function(){ //ye is sum ko as a variable treat kry ga aur usy top pr undefined dy ga
+console.log("hi)
+}
+ 
+More Explain Example:
+console.log(sum);  //undefined bcoz it treated it as a variable
+var sum=function(){ //ye is sum ko as a variable treat kry ga aur usy top pr undefined dy ga
+console.log("hi)
+}
+
+
+Case 2:
+var sum=function(){
+console.log("hi)
+}
+sum();//hi ,now it will run but sum ki top pr declaration ni hu rhi,ye is wajah sy chly ga kyu k code line by line run hu rha ha
+
+4=>
+sum(); //it will give reference error that sum is not defined
+const sum=()=>{
+    console.log("HI)
+}
+
+                               Variable Hoisting
+Variables  are moved and declared on top before code execution
+
+=>All declarations (function, var, let, const and class) are hoisted in JavaScript, while the var
+ declarations are initialized with undefined, but let and const declarations remain uninitialized.
+=>Its mean let and const me hoisting k features implement ni hu gy
+Example 1: 
+console.log(a);   //it give reference error that a is not defined
+let a=98;
+
+Its mean let and const apny declaration k bad he access hu gy,us sy phly access ni hu gy while var ko hum us  phly access kr skty ha
+Example 2:
+Case:1
+function foo () {
+  console.log(a);
+}
+let a = 20;
+foo();  // This is perfectly valid
+
+Case 2:
+function foo() {
+ console.log(a); // ReferenceError: a is not defined
+}
+foo(); // This is not valid
+let a = 20;
+
+2-Execution Phase
+Code run line by line
+
+

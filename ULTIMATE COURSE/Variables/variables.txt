@@ -1,0 +1,117 @@
+   Variables  && let,const,var
+
+
+//Variable computer ki memory k andr ek jagah huti ha
+//number ko start pr ly k ap kisi variable ko ni bna skty
+// e.g var 8tayyab=7;   //it will give error
+//JavaScript is  a case sensitive .It means  Harry & HaRRy variables are different
+//var Harry=89;    var HaRRy=90; //both are different variables but this way is not recommended
+
+//----------------------------------------------
+//let,const,var
+
+//Point 1:
+//var is globally scoped while let is block scoped
+
+//var case
+
+// var a = 45;
+// var b = "tayyab";
+// var c = null;
+// var d = undefined;
+// {
+//   var b = "this";
+//   console.log(b); //this
+// }
+// console.log(b);   //this
+
+//let case 
+
+// var a = 45;
+// let b = "tayyab";
+// var c = null;
+// var d = undefined;
+// {
+//   let b = "this";
+//   console.log(b); //this
+// }
+// console.log(b); //tayyab
+
+//----------
+
+//Point 2:
+//var can be updated & re-declared within its scope while let can be updated but not redeclared
+
+//var case
+
+// var a = 45;
+//var a=78;        //u can update and redeclared it
+// console.log(a);   //78
+
+//let case
+
+// let a = 45;
+//let a=78;        //it give error here,u cannot redeclared it
+//a=98;  // u can only update it
+// console.log(a);   //98
+
+//---------------
+
+//Point 3: const can neither be updated or redeclared
+
+//Point 4: var variables by default undefined sy initialize huty hain while  let and const are not by default initialized
+//const agr block level py bna ha tu usy globally access ni kr skty like let but agr globally bna ha,tu block me access kr skty ha
+//Point 5:
+same variable jo hum ny datatype var a nam ka bnaya ha,us same nam ka variable block level me  datatype let k sath b bna skty ha mgr usy bnany sy 
+phly us ko upr access ni kr skty kyu k ye error dy ga k mai phly sy declare hu
+Example:
+Scenario 1:
+var a=67;
+console.log(a);
+{
+console.log(a); //give error here,let a dobara declare hu ga tu conflict hu ga k mai knsa a hu,block level ka ya global level ka
+let a =67;
+console.log(a)
+}
+console.log(a)
+Scenario 2:
+var a=67;
+console.log(a);  //67
+{
+let a =77;
+console.log(a)   //77
+}
+console.log(a)  //67
+
+-----------------------------------------
+function k andr bnaiy gaiy variables ki access function k bhr ni ha,chahy wo var sy he bnaiy gaiy hu
+function b() {
+    var aa = 99;   //not accessible outside of function
+  function v() {
+    var vaz = 99; //not accessible outside
+    }
+      console.log(vaz, "after");//not accessible 
+
+  v();
+  console.log(vaz, "after");//not accessible
+}
+b();
+console.log(aa)   ////not accessible 
+---------------------
+var a = 10;
+console.log(a); shows 10
+console.log(boss); shows undefined
+var boss = 10;
+
+Js,run this as 
+Phly sary variables ko declare krta ha,
+phr unko unki jagah pr initialize krta ha
+var a;
+var boss;
+a=10;
+console.log(a);
+console.log(boss) 
+//jab yaha pr boss initialize krny sy phly use kry gy 
+tu js kahay ga k boss declare tu ha mgr us k andr kuch ni ha
+so,it shows undefined
+boss=10;

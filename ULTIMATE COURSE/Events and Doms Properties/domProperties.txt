@@ -1,0 +1,89 @@
+InnerHTml:
+=>InnerHTml gives the innerHtml of element as a string
+=>It is only valid for elements,not for text and comment
+Example:
+let sp1 = document.getElementById("sp1");
+console.log(sp1.innerHTML); result:<b>asas</b>;
+=>we can also update it
+sp1.innerHTML = "<li>TAYYAB</li>";
+
+=>OuterHtml
+It includes the innerHTML as well as the selector element
+Example:
+let sp1 = document.getElementById("sp1");
+console.log(sp1.outerHTML);   result:<span id="sp1"><b>asas</b></span>
+
+=>Non Element text:
+We can also get non element text by data/nodeValue
+let sp = document.body.firstChild.nodeValue;
+console.log(sp);
+
+=>textContent
+If we want to see all the text content in our html page,we can easily do it
+console.log(document.body.textContent); result:sdds asas 
+
+=>hidden
+It is used to unvisible the element
+We can do this by html and by dom property too
+See Notes 
+----------------------------
+Attribute Methods
+<body> 
+    <div id="di" class="hey">Hi,I am Tayyab Jamshaid</div>
+    
+    <script src="./variables.js"></script>
+    
+ </body>
+let data = document.getElementById("di");
+=>getAttribute shows className
+let a = data.getAttribute("class");
+console.log(a); //result :hey
+
+=>hasAttributes return boolean
+ if attribute avaiable return true else return false
+console.log(data.hasAttribute("style")); //false
+console.log(data.hasAttribute("class")); //true
+
+=>setAttribute
+We can also set any attribute in our element
+data.setAttribute("hidden", "true");
+data.setAttribute("class", "kesa");
+
+=>removeAttribute
+It will remove the written  attribute
+data.removeAttribute("class"));
+
+=>getAllAttributes
+If we want all attributes in our element,use this property
+console.log(data.attributes);
+
+NOTE:
+Js suggest that k agr apny element me koi attribute rkhwana ha tu us nam 
+data- sy rkhy,is sy ye faida hu ga k ye hamai dataset nam ka build in  feature dy ga,jis sy
+hum attributes ko easily access kr pai gy
+
+data.setAttribute("data-game", "kesa");
+data.setAttribute("data-player", "taiq");
+
+console.log(data.dataset); result:{game: 'kesa', player: 'taiq'}
+----------------------------------------------------------------------------
+Insertion Methods
+<body> 
+    before div<div id="di" class="hey">Hi,I am Tayyab Jamshaid</div>after div
+    
+    <script src="./variables.js"></script>
+    
+ </body>
+
+
+let data = document.getElementById("di");
+
+//setAttribute
+let newDiv = document.createElement("div");
+newDiv.className = "alert";
+newDiv.innerHTML = "<h1>Not Allow</h1>";
+// data.append(newDiv);   add in the last of element
+// data.prepend(newDiv);  add in the start of element
+// data.before(newDiv);   add before starting of this element
+// data.after(newDiv);    add after ending of this element
+

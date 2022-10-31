@@ -1,0 +1,63 @@
+Operators
+    Arithmetic Operators
+let a = 12;
+let b = 22;
+console.log("a + b", a + b);
+console.log("a - b", a - b);
+console.log("a * b", a * b);
+console.log("a / b", a / b);
+
+//exponentiation **
+console.log("a ** b", a ** b);
+// is ka matlab ye ha k a ki power b kr du
+//means 12 ko 12 sy 22 dfa multiply krdu
+
+//modulus %
+//bachi hui value/reminder likh du
+// Example1
+a = 45;
+b = 4;
+console.log("a % b", a % b); //result:1
+//45 ko jab 4 sy divide kry gy tu 45 me sy value bach jai gi(11X4=44)
+//is case me bachui value 1 ha,is liye hamara modulus b 1 ha
+
+// Example2
+a = 5;
+b = 4;
+console.log("a % b", a % b); //result:1
+//5 ko jab 4 sy divide kry gy tu 5 me sy value bach jai gi(4X1=4)
+//is case me bachui value 1 ha,is liye hamara modulus b 1 ha
+
+// Example3
+a = 12;
+b = 4;
+console.log("a % b", a % b); //result:0
+//12 ko jab 4 sy divide kry gy tu koi value ni bachay gi(4X3=12)
+//is case me bachui value 0 ha,is liye hamara modulus b 0 ha
+
+a = 10;
+//increment & Decrement
+console.log("++a =", ++a); //phly a ko plus kr du,sath he show krwa du
+console.log("a++ =", a++);//phly a ko show kr du,phr usy increment kr du
+console.log("--a =", --a);
+console.log("a-- =", a--);
+console.log("a =", a);
+console.log("a--", a--);
+
+--------------------------------------------------------------------------------------------------
+Assignment Operators
+
+// 1)   += -= *= /=
+let x = 6;
+x += 1; //x = x + 1; 
+console.log(a);
+x -= 1; //x = x - 1; 
+x *= 1; //x = x * 1; 
+x /= 1; //x = x / 1;
+
+// 2)  %= (modulus)
+x %= 2;//x=x%2      //result is 0
+
+
+//3) **=
+x **= 12; //x=x**12;

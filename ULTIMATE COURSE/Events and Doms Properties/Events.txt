@@ -1,0 +1,39 @@
+Browsers Events
+A event is like a signal which tells us that something is happened
+ 
+SEE NOTES(for events)
+-----
+
+addEventListener && removeEventListener
+<body> 
+<div>
+    <button id="btn" class="vb"> Click Me</button>
+</div>    
+    <script src="./variables.js"></script>
+    
+ </body>
+let btn = document.getElementById("btn");
+const x = () => {
+  alert("I AM X");
+};
+const y = () => {
+  alert("I AM Y");
+};
+btn.addEventListener("click", x);
+btn.addEventListener("click", y);
+
+button ko click krny pr phly x wala alert chly ga then y wala
+
+ 
+// Now,ab agr hum chahty k agr user 2 input dy tu x wala event chly,y wala event na chly,then use this
+let a = prompt("Enter Value");
+if (a == "2") {
+  btn.removeEventListener("click", y);
+  NOTE:always give variable in removeEventListener jesy upr humny y diya ha ,
+  dont give directly function to it,it gives error
+  like    
+  btn.removeEventListener("click", ()=>{     //wrong way
+    alert("y")
+  });
+
+}

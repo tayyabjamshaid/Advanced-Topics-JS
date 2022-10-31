@@ -1,0 +1,99 @@
+//try catch works scronously
+//line by line code ko check kry ga,agr error aiy ga tu foran try me code ki execution ko ruk dy ga aur catch me error show krwa dy ga
+Example:Why we need it..?
+setTimeout(() => {
+  console.log("first 1");
+}, 1000);
+
+console.log(first);//ab yaha pr next code ki execution ko ruk dy ga aur error throw kry ga k first define ni ha
+
+
+setTimeout(() => {
+  console.log("first 2");
+}, 2000);
+setTimeout(() => {
+  console.log("first 3");
+}, 3000);
+
+Error any ki wajah sy hamara code ruky na blky chlta rhy,for this,we use try catch
+Example:
+setTimeout(() => {
+  console.log("first 1");
+}, 1000);
+
+try {
+  console.log(first);
+} catch (error) {
+  console.log(error);
+}
+
+setTimeout(() => {
+  console.log("first 2");
+}, 2000);
+setTimeout(() => {
+  console.log("first 3");
+}, 3000);
+
+----------------
+Scenario:
+Case 1:
+=>hum try catch me likhy huay setTimeout me agr koi error ata ha tu catch us error ko handle/show ni krta blky try me he error throw kr dta ha
+We cannot handle error of setTimeout in try and catch, that error will not handle in catch and it throw error in try
+=>Is ki reason ye ha k try catch line by line code execute krta ha,setTimeout kyu k foran call ni huta is lye ye foran next line pr chla jata ha,
+aur jab setTimeout ka function call huta ha aur us k andr error hu,tu ye usy catch me ni bhjta blky foran try me he error show krwa dta ha
+
+
+try {
+  setTimeout(() => {
+    console.log(first);    //it throws a error but kyu k ye try and catch me likha ha,is wajah sy try and catch k bhr wala code execute hu ga
+  }, 1000);
+} catch (error) {
+  console.log(error);
+}
+setTimeout(() => {
+  console.log("first 2");
+}, 2000);
+
+Result:
+Uncaught ReferenceError: first is not defined
+first 2
+
+Case 2:
+If we want k try catch me setTimeout me b error throw na kry tu setTimeout k andr b try catch lga ly
+Example:
+try {
+  setTimeout(() => {
+    try {
+      console.log(first);
+    } catch (error) {
+      console.log(error);
+    }
+  }, 1000);
+} catch (error) {
+  console.log(error);
+}
+
+setTimeout(() => {
+  console.log("first 2");
+}, 2000);
+Result:
+ first is not defined
+ first 2
+-------------------------------------------------
+Another Scenario
+Agr ap k catch me b koi error ha tu try catch k bhr wala code b ni chly ga
+try {
+  console.log(first);
+} catch (error) {
+  console.log(error);
+  console.log(p);
+}
+
+console.log(9);
+if (true) {
+  console.log(19);
+}
+
+Result:
+ReferenceError: first is not defined
+ Uncaught ReferenceError: p is not defined
