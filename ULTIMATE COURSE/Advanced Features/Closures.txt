@@ -1,0 +1,87 @@
+Closure
+Inner Function outer Function k variables ko access kr skta ha
+
+Example 1:
+function init() {
+  var data = "mozilla";
+  function data2() {
+    console.log(data);
+  }
+  return data2;
+}
+let a = init();
+a();
+Result: mozilla
+
+Example 2:
+
+function init() {
+  var data = "mozilla";
+  function data2() {
+    console.log(data);
+  }
+  data = "tayyab"; 
+  return data2;
+}
+let a = init();
+a();
+Result : tayyab
+Note:
+tayyab any ki reason ye ha k jab b hum Closure ko  return krty ha tu us k andr function k sath sath us k variables ka reference b return krty ha
+It means hum variables return ni kr rhy,us ka reference return kr rhy ha,
+is case me hum ny return krny sy phly he variable me change kr dia,tu automatically us k reference me b value update hu gai,is lye tayyab print hu ga
+
+Example 3:
+
+function init() {
+  const x = () => {
+    let a = 9;
+    console.log(a);
+    const y = () => {
+      let a = 10;
+      console.log(a);
+      const z = () => {
+        let a = 11;
+        console.log(a);
+      };
+      z();
+    };
+    y();
+  };
+  return x;
+}
+let catchh = init();
+catchh();
+Result: 
+9
+10
+11
+
+Example 4:
+
+function init() {
+  const x = () => {
+    let a = 9;
+    console.log(a);
+    const y = () => {
+      console.log(a);
+      const z = () => {
+        console.log(a);
+      };
+      z();
+    };
+    a = 999;
+    y();
+    console.log(a);
+  };
+  return x;
+}
+let catchh = init();
+catchh();
+
+Result:
+9
+999
+999
+999
+

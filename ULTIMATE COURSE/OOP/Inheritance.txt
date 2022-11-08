@@ -1,0 +1,177 @@
+Inheritance Example:
+class Animal {
+  constructor(name, color) {
+    this.name = name;
+    this.color = color;
+  }
+
+  running() {
+    console.log(this.name + " is running");
+  }
+  barking() {
+    console.log(this.name + " with color " + this.color + " is barking");
+  }
+}
+class Monkey extends Animal {
+  eating() {
+    console.log(this.name + " is eating banana");
+  }
+}
+let monkey = new Monkey("Bux", "red");
+monkey.barking();
+monkey.eating();
+
+------------
+Method Overriding
+class Employee {
+  login() {
+    console.log(`Employee has loged in`);
+  }
+  logout() {
+    console.log(`Employee has loged out`);
+  }
+  requestLeaves(leaves) {
+    console.log(`Employee has requested ${leaves} leaves`);
+  }
+}
+
+class Programmer extends Employee {
+  requestCoffee(x) {
+    console.log(`Employee has requested ${x} coffess`);
+  }
+  requestLeaves(leaves) {   //this is Overriding,same method with same parameters but execution are different
+    console.log(`Employee has requested ${leaves + 1} leaves (One Extra)`);
+  }
+}
+
+let e = new Programmer();
+e.login();
+e.requestLeaves(6);
+
+----------------------------------------
+Super Keyword
+let suppose child class me mainy overiding ka function bnaya ha,mai chahta hu k phly parent class me jo is function ki execution hui ha wo chly aur bad me mere wala code b chly,
+for this purpose,use Super Keyword
+
+Example:
+class Employee {
+  login() {
+    console.log(`Employee has loged in`);
+  }
+  logout() {
+    console.log(`Employee has loged out`);
+  }
+  requestLeaves(leaves) {
+    console.log(`Employee has requested ${leaves} leaves`);
+  }
+}
+
+class Programmer extends Employee {
+  requestCoffee(x) {
+    console.log(`Employee has requested ${x} coffess`);
+  }
+  requestLeaves(leaves) {
+    super.requestLeaves(leaves);  //here 
+    console.log("One Extra is Granted");
+  }
+}
+
+let e = new Programmer();
+e.login();
+e.requestLeaves(6);
+--------------------------------------
+Scenario 1:
+class Employee {
+  constructor(name) {
+    console.log("Employee constructor is here");
+    this.name = name;
+  }
+  login() {
+    console.log(`Employee has loged in`);
+  }
+  
+}
+
+class Programmer extends Employee {
+ requestCoffee(x) {
+    console.log(`My name is ${this.name}`);
+    console.log(`Employee has requested ${x} coffess`);
+  }
+  
+}
+
+let e = new Programmer("Tayyab");
+e.requestCoffee(2);
+
+Result:
+Employee constructor is here
+My name is Tayyab
+Employee has requested 2 coffess
+
+ Note: hum ny child class ka use krty huay object bnaya,mgr phr b parent class ka
+ constructor run huwa,aisa is lye kyu k hamara js engine by default child class me parent k constructor aur us k arguments ko super Keyword k zariye call kr lta ha
+  Like in above example:
+
+class Programmer extends Employee {
+    constructor(...args){      //child class by default  apny andr khud he constructor bna k parent class k constructor ko call kr lta ha
+        super(...args)
+    }
+  requestCoffee(x) {
+    console.log(`My name is ${this.name}`);   //kyu k hamary pas parent class k variables ki access ha,is lye hum un variables ko yaha use kr skty ha
+    console.log(`Employee has requested ${x} coffess`);
+  }
+  
+}
+-----------------
+Tutorial # 80
+Scenario:
+
+=>Agr ap chahty ha k parent class ka constructor call na hu,srf child ka hu,then aisa ni hu skta
+=>It is compulsory for child class to call parent class constructor 
+=>Agr parent class k variables ko child class me use krna chahty ha,tu usy b super keyword me likhna pry ga
+class Employee {
+  constructor(name) {
+    console.log("Employee constructor is here");
+    this.name = name;
+  }
+  login() {
+    console.log(`Employee has loged in`);
+  }
+}
+
+class Programmer extends Employee {
+  constructor() {
+    console.log("kesa");  //it will give error here k parent class k constructor ko b call kro
+  }
+  requestCoffee(x) {
+    console.log(`My name is ${this.name}`);    //we cannot use this variable(this.name) here bcoz we cannot write it with super keyword
+    console.log(`Employee has requested ${x} coffess`);
+  }
+}
+
+Solution:
+class Employee {
+  constructor(name) {
+    console.log("Employee constructor is here");
+    this.name = name;
+  }
+  login() {
+    console.log(`Employee has loged in`);
+  }
+}
+
+class Programmer extends Employee {
+  constructor(name) {
+    super(name);   //call super keyword with arguments
+    console.log("kesa" + this.name);
+  }
+  requestCoffee(x) {
+    console.log(`My name is ${this.name}`);
+    console.log(`Employee has requested ${x} coffess`);
+  }
+}
+
+let e = new Programmer(22, "Tayyab");
+e.requestCoffee(2);
+
+----------------------------------

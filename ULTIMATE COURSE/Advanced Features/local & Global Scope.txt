@@ -1,0 +1,45 @@
+Js has 3 type of scopes
+
+1-Block Scope
+2-Global Scope
+3-Function Scope
+
+
+                        Block Scope
+
+=>let & const provide block level scope
+
+=>if you make a variable with let/const and use it in if statement/loops/blocks,then outside of it,u cannot have access of that let/const variable becoz let is a block scope
+
+{
+  let a = 8;
+}
+console.log(a);
+
+                       Function Scope
+
+Function k andr bnaiy huay variables ko outside of function access ni has
+
+function data() {
+    let a = 9;
+}
+data();
+console.log(a)   //it gives error here
+
+                    Global Scope
+
+{
+  var a = 8;
+}
+a = 90;
+console.log(a);
+
+or 
+
+let p=99;
+function data(){
+    p=100;
+    console.log(p)
+}
+data();
+console.log(p)

@@ -1,0 +1,52 @@
+NOTE: (this k mutaliq general pta huna chahiye)
+Case 1:Alone, this refers to the global object.
+Scenario:
+<script>
+console.log(this) 
+//it refers to the global object(window),so it shows window 
+</script>
+
+Case 2:In a regular function or in nested function, this refers to the global object.
+Scenario:
+function data() {
+  console.log(this); //it refers to the global object(window),so it shows window 
+}
+data();
+
+Case 3:In an object method, this refers to the object,not window object.
+Scenario:
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  id: 5566,
+  fullName: function() {
+    return this.firstName + " " + this.lastName;     //it refers to that object
+  }
+};
+
+Case 4:
+In strict mode,We cannot access window object by this in plain function
+<script>
+"use strict";
+function data() {
+  console.log(this);    //gives undefined
+}
+data();
+</script>
+
+----------
+NOte:
+Agr hum event k andr function keyword k sath this ko call krty ha tu wo this us element ko point out kry ga jo us event ko receive kr rha ha
+example:
+let data = document.querySelector(".click");
+data.addEventListener("click", function (event) {
+  console.log(this);
+  // `this` will point to `element`
+});
+
+Agr hum function keyword ki bjaiy arrow function k sath likhy gy tu wo this window object ko point out kry ga
+let data = document.querySelector(".click");
+data.addEventListener("click", () => {
+  console.log(this);  //window object
+});
+

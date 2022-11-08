@@ -1,0 +1,53 @@
+Hoisting
+ js engine hamari tamam declarations ko top pr move kr dta ha 
+
+ Function Hoisting:
+ functions written with function keyword will declared at the top but function expression(even with var,let const)  will not hoisted at the top
+
+Case 1
+data();//result :run
+function data(){
+    console.log("run");
+}
+
+Case 2
+
+data();  //it gives reference error here bcoz this is function expression
+var data = () => {
+  console.log("Run");
+};
+
+Case 3
+
+data();  //it gives reference error here
+const data = () => {
+  console.log("Run");
+};
+
+Case 4
+
+data();  //it gives reference error here
+let data = () => {
+  console.log("Run");
+};
+
+Variable Hoisting:
+var ko agr declare and initialize krny sy phly use kry gy tu ye srf undefined dy ga kyu k ye top pr declare hu chuka ha
+ while let & const k case me ye top pr declare tu ga mgr dead zone me chla jai ga,is lye ye yaha reference error dy ga
+      Var cases
+Case 1:
+console.log(a); //it gives undefined here
+var a;
+
+Case 2:
+console.log(a); //it gives undefined here bcoz ye srf declare huta ha top pr,initialize ni
+var a=10;
+
+let cases:
+Case 1:
+console.log(a); //it gives reference error here
+var a;
+
+Case 2:
+console.log(a); //it gives reference error here
+var a=10;

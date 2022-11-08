@@ -1,0 +1,100 @@
+Example 1:
+class RailwayForm {
+  submit() {
+    alert("Submit");
+  }
+  cancel() {
+    alert("Cancel");
+  }
+}
+let harry = new RailwayForm();
+let tayyab = new RailwayForm();
+harry.submit();
+tayyab.cancel();
+
+
+Example 2:
+class RailwayForm {
+  submit() {
+    alert(this.name + " form Submit successfully for train no " + this.trainno);
+  }
+  cancel() {
+    alert(this.name + " train Cancel having name " + this.trainno);
+  }
+  fill(name, trainno) {
+    this.name = name;
+    this.trainno = trainno;
+  }
+}
+let harry = new RailwayForm();
+let tayyab = new RailwayForm();
+harry.fill("harry", 1223);
+tayyab.fill("tayyab", 1223);
+tayyab.submit();
+harry.submit();
+tayyab.cancel();
+
+---------------------------------
+Constructors:
+Jab b ap kisi class ka object bnaty tu tab constructor khud he call huta ha
+
+Scenario 1:
+Agr object bnaty huay us k andr kisi value ko pass ni kya,tu constructor k variables me undefined set kr dy ga
+
+Example:
+class RailwayForm {
+  constructor(name, trainno) {
+    this.name = name;
+    this.trainno = trainno;
+  }
+  submit() {
+    alert(this.name + " form Submit successfully for train no " + this.trainno);
+  }
+  cancel() {
+    alert(this.name + " train Cancel having name " + this.trainno);
+  }
+}
+let tayyab = new RailwayForm("tayyab", 1234);
+let usman = new RailwayForm("usman", 890);
+let amir = new RailwayForm();
+tayyab.submit();
+usman.submit();
+amir.submit();
+//amir ka object bnaty huay hum ny us k andr us ki values ko pas ni kya,tu js engine hamai error dny ki bjaiy un variables me undefined rkh dy ga 
+//Result: undefined form Submit successfully for train no undefined
+usman.cancel();
+
+
+Scenario 2
+class RailwayForm {
+  constructor(name, trainno, address) {
+    this.name = name;
+    this.trainno = trainno;
+    this.address = address;
+  }
+  submit() {
+    alert(this.name + " form Submit successfully for train no " + this.trainno);
+  }
+  preview() {
+    alert(
+      this.name +
+        " Your form  for train no " +
+        this.trainno +
+        " your address is " +
+        this.address
+    ); 
+  }
+  cancel() {
+    alert(this.name + " train Cancel having name " + this.trainno);
+    this.trainno = 0;
+  }
+}
+
+let tayyab = new RailwayForm("tayyab", 13245, "bahria town Lhr");
+tayyab.preview();
+tayyab.submit();
+tayyab.cancel();
+tayyab.preview();
+
+
+

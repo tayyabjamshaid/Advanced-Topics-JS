@@ -1,0 +1,94 @@
+Arrow Function
+Arrow Function can also be written like this syntax in a single line
+
+Example 1:
+=>const hello = () => console.log("Hi");
+ 
+Example 2:
+const hello = (name) => console.log("Hello", name);
+hello("tayyab");
+
+Example 3:
+agr ek argument pass krna hu tu pranthesis lgana zrori ni,mgr more than one py zrori ha
+
+=>const hello = name => console.log("Hello", name);
+hello("tayyab");
+
+=>const hello2 = (name,age) => console.log("Hello", name,age);
+hello("tayyab",23 );
+
+
+Major differnce btw regular Function and arrow Function 
+
+=>const x = {
+  name: "tayyab",
+  role: "JS developer",
+  exp: 30,
+  show: function () {    //regular function jab object me dty ha,tu us k this me wo object he huta ha,is lye hum usy access kr skty ha
+    console.log(this.name, this.exp);
+  }, 
+};
+x.show();
+
+=>const x = {
+  name: "tayyab",
+  role: "JS developer",
+  exp: 30,
+  show: () => { //jab object me arrow function dty ha,tu us k this me object k arguments  ni huty blky us me window object huta ha,
+    console.log(this.role);
+  },
+};
+x.show();
+
+Scenario:
+Case 1:
+Object k andr function keyword k sath bnaiy huay function me jab hum dosara function  bnaiy gy tu us  function me this us object window ko  point out kry ga
+
+const x = {
+  name: "tayyab",
+  role: "JS developer",
+  exp: 30,
+  show: function () {
+    console.log(this.name, this.exp);
+    setTimeout(function () {
+      console.log(this.role);    //ab ye this is object ko point out ni kr rha,blky ye window object ko point out kr rha ha kyu k hum isy ek function k andr dosra function bna k access kr rhy ha
+    }, 2000);
+  },
+};
+x.show();
+
+Case 2:
+Object k andr function keyword k sath bnaiy huay function me jab hum arrow function bnaiy gy tu us arrow function me this us object ko he point out kry ga
+const x = {
+  name: "tayyab",
+  role: "JS developer",
+  exp: 30,
+  show: function () {
+    console.log(this.name, this.exp);
+    const data = () => {
+      console.log(this);   //result:{name: 'tayyab', role: 'JS developer', exp: 30, show: ƒ}
+    };
+    data();
+  },
+};
+x.show();
+
+
+
+
+NOte:
+Agr hum event k andr function keyword k sath this ko call krty ha tu wo this us element ko point out kry ga jo us event ko receive kr rha ha
+example:
+let data = document.querySelector(".click");
+data.addEventListener("click", function (event) {
+  console.log(this);
+  // `this` will point to `element`
+});
+
+Agr hum function keyword ki bjaiy arrow function k sath likhy gy tu wo this window object ko point out kry ga
+let data = document.querySelector(".click");
+data.addEventListener("click", () => {
+  console.log(this);  //window object
+});
+
+

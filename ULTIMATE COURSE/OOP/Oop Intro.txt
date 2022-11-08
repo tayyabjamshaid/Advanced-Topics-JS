@@ -4,3 +4,77 @@ Abstraction
 Polymorphism
 Encapsulation
 Inheritance
+
+
+Proptotypes
+ The prototype is an object that is associated with every functions and objects by default in JavaScript
+
+
+=>We can add any property in our prototype object by using __proto__
+ Example:
+ let a = {
+  name: "Tayyab",
+};
+console.log(a);
+
+let p = {
+  run: () => {
+    alert("Kesa");
+  },
+};
+a.__proto__ = p;
+
+a.run();
+
+Scenario 1:
+let suppose hamary pas two run methods ha,ek a object me aur second a k prototype me
+tu is case me Sab sy phly js engine  a k run function ko chalaiy ga
+agr usy waha sy run function ni milta tu ye a ki prototype me search kry ga
+
+Example
+let a = {
+  name: "Tayyab",
+  run: () => {
+    alert("Kesa");              //this will run
+  },
+};
+console.log(a);
+
+let p = {
+  run: () => {
+    alert("Kesa");
+  },
+};
+a.__proto__ = p;
+
+a.run();
+
+
+Scenario 2:
+
+let a = {
+  name: "Tayyab",
+  run: () => {
+    alert("Kesa");              
+  },
+};
+
+let p = {
+  run: () => {
+    alert("Kesa");
+  },
+};
+p.__proto__={
+    age:97
+}
+a.__proto__ = p;
+
+a.run();
+console.log(a.age);
+Now we have to understand k  a object  age ko kesy dhunday ga
+
+a--->go to his object---->go to his prototype---->search in p object---->search in p prototype
+ 
+a age ko sab sy phly apny obj me dhonday ga,agr waha sy ni mila,tu apny prototype me dhonday ga,us k prototype me p object ha,us me dhonday ga,agr p object me b ni ha tu
+p k prototype me dhonday ga 
+     
