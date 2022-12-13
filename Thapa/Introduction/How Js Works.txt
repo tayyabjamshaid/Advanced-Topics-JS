@@ -68,14 +68,16 @@ It is divided in 3 parts
 a)Variable object
 b)Scope Chain
 c)this
-Sab sy phly variable objects ko create kya jata ha 
+Sab sy phly variable object ko create kya jata ha 
 After that,Scope chain ko create kya jata ha 
 After that,ye determine kya jata ha k ye this variable kis ko represent kr rha ha
 
                                 Variable object
-=>Sab sy phly variable object bnta ha,phr jab code run huta ha,tu js engine ye dkhta ha k functions/variables ko kaha kaha declare kya ja rha ha
-=>Har function k ek property  ko variable object me create kya jata ha,jo k us function ko pointout kr rhi huti ha
-=>Har variable ki property ko variable object me create kya jata ha,jis ko undefined rkha jata ha
+=>Sab sy phly ek variable object bnta ha,phr jab code run huta ha,tu js engine ye dkhta ha k functions/variables ko kaha kaha declare kya ja rha ha
+=>Har function ki ek property  ko us variable object me create kya jata ha,jo k us function ko pointout kr rhi huti ha
+=>Har variable ki property ko  variable object me create kya jata ha,jis ko undefined rkha jata ha
+Note:
+Variable Object ek he ha jis me functions and variables ki property ko rkha jata ha
 Example start:
 a(); //hi bcoz function property nichay diye huay function ko sath sath point b kr rhi ha
 console.log(b); //undefined   bcoz is ki property me abi undefined rkha gya ha
@@ -154,6 +156,91 @@ function foo() {
 }
 foo(); // This is not valid
 let a = 20;
+
+case 3:
+agr variable ko declare kye bgair he usko initialize krny sy phly he access kry gy  tu ye error dy ga
+=>Scenario 1:
+console.log(a);   //a is not defined
+a = "Web Developer";
+
+=>Scenario 2:
+a = "Web Developer";
+console.log(a);   //ab a ko humny declare ni kya but us ko initialize krny k bad usko access kya tu by default ye a ki datatype var rkh dy ga and we can access it,but  remember after initialization
+
+
+
+b)Scope Chain
+Kis variable ko knsi value dni ha,ye scope chain hamai btata ha
+In scope chain,there is a lexical scopping
+What is Lexical Scoping..?
+Inner functions apny outer functions k variables ko access kr skty ha but outer functions innner functions k variables ko access ni kr skty(Same as closure)
+
+Example:
+var a = "Web Developer";
+
+function data() {
+  var b = "desi";
+  function data2() {
+    let c = "css";
+    data3();
+    console.log(a + b + c);
+  }
+  data2();
+}
+
+data();
+function data3() {
+  let d = "js";
+  console.log(a + b + c + d);      //here gives an error,ye kahay ga k  b and c defined ni ha,bcoz b and c function k apny inner variables ha,outside of function inhai access ni kr skty
+}  
+
+      What is use strict..?
+     => It is a new feature of ecma script 5
+     => The statement "use strict" likhny sy hum apny browswer ko kehty ha k tum strict mode pr chly jao,ye js k lye ek safer feature ha
+    
+     Example 1:
+     "use strict";
+   x = 3.14;
+console.log(x); //x is not defined   strict mode me hr variable ki datatype lgana zrori ha,so it gives error here
+
+     Example 2:
+     Scenario 1:
+function sum(a, b) {
+  add = a + b; 
+  console.log(add);  //15 
+}
+sum(7, 8);
+
+Scenario 2:
+Normally scenario 1  works fine but with using strict mode,js engine hamai kehta ha k bs ab tmhai boht chot dy di,ab mai strict mode me hu,mjy ni pta ye add kya ha
+     "use strict";
+function sum(a, b) {
+  add = a + b; 
+  console.log(add);  //add is not defined,ab hamai upr add k sath us ki datatype likhni hu gi
+}
+sum(7, 8);
+
+Example 3:
+
+Scenario 1:
+function sum(a, a) {    //hum same name k 2 parameters pass kr rhy ha
+  add = a + 10;
+  console.log(add); //18, it takes second argument value
+}
+sum(7, 8);
+
+Scenario 2:
+by using strict mode,it gives duplication error
+"use strict";
+function sum(a, a) {
+  add = a + 10;
+  console.log(add);  //Uncaught SyntaxError: Duplicate parameter name not allowed in this context (at index.js:2:17)
+}
+sum(7, 8);
+
+
+
+----
 
 2-Execution Phase
 Code run line by line

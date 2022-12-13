@@ -1,13 +1,13 @@
-const x = {
-  name: "tayyab",
-  role: "JS developer",
-  exp: 30,
-  show: function () {
-    console.log(this.name, this.exp);
-    const data = () => {
-      console.log(this);
-    };
-    data();
-  },
+let likes = 100;
+let youTubeChanel = {
+  name: "Tayyab Jamshaid",
+  subscribers: 10000,
 };
-x.show();
+const checkStatus = (a, b) => {
+  a = 200;
+  b.subscribers = 20000;
+};
+checkStatus(likes, youTubeChanel);
+
+console.log(likes);
+console.log(youTubeChanel.subscribers);

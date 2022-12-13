@@ -1,0 +1,19 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: aqua;
+}
+.mainDiv {
+  text-align: center;
+}
+.centerDiv {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* #mywords {
+  pointer-events: none;
+} */

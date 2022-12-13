@@ -1,0 +1,95 @@
+=>We can set and get the class variables by using set & get methods
+=>It is compulsory for setter & getter k is k andr likhy huay variables ko _ k sath likha jai like _name,
+getter & setter k is behaviour ki wajah sy hum apny constructor me b us variable ka nam _ sy he set kr dty ha
+
+Example 1:
+class Animal {
+  constructor(name) {
+    this._nam = name;
+  }
+  walk() {
+    console.log("Animal " + this.name + " is walking");
+  }
+  get getName() {
+    return this._nam;
+  }
+  set setName(name) {
+    //it will take atleast one parameter
+    this._nam = name;
+  }
+}
+let data = new Animal("lion");
+console.log(data.getName); lion
+data.setName = "Nir";
+console.log(data.getName); Nir
+
+
+Example 2:
+constructor me variable bnaty huay hum ny _ k bgair he variable  bna lia,ab getter method identify ni kr pai ga k us k andr kis variable ko get kya ja rha ha,so it give undefined
+class Animal {
+  constructor(name) {
+    this.nam = name;  
+  }
+  walk() {
+    console.log("Animal " + this.name + " is walking");
+  }
+  get getName() {
+    return this._nam;
+  }
+  set setName(name) { //it will take atleast one parameter
+    this._nam = name;
+  }
+}
+let data = new Animal("lion");
+console.log(data.getName);  //undefined bcoz getter cannot identify variable name
+data.setName = "Noor";
+console.log(data.getName);//Noor bcoz ab humny setter k zariye ek new variable me value rkhwa k usy get kr lia ha
+
+--------------------------
+instanceof
+=>instanceof operator sy hum ye pta lgwa skty ha k ye object is class sy belong krta ha ya ni
+Agr belong krta ha tu return true else false
+
+Example:
+
+class Animal {
+  constructor(name) {
+    this.nam = name;
+  }
+  walk() {
+    console.log("Animal " + this.name + " is walking");
+  }
+  
+}
+let data = new Animal("lion");
+let tayyab = 99;
+console.log(data instanceof Animal); true
+console.log(tayyab instanceof Animal); false
+
+Note:
+It returns true if object directly belong to the class(upr wali example me) or any other class inherit from it
+
+Example:
+class Animal {
+  constructor(name) {
+    this.nam = name;
+  }
+  walk() {
+    console.log("Animal " + this.nam + " is walking");
+  }
+}
+class Dog extends Animal {
+  constructor(nam) {
+    super(nam);
+  }
+
+  legs() {
+    console.log("Legs having 4");
+  }
+}
+let data = new Dog("lion");
+let tayyab = 99;
+console.log(data instanceof Animal); true bcoz dog is inherited from animal
+console.log(tayyab instanceof Animal); false
+
+

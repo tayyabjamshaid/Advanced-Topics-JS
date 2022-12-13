@@ -43,6 +43,17 @@ Case 2:
 console.log(a); //it gives undefined here bcoz ye srf declare huta ha top pr,initialize ni
 var a=10;
 
+case 3:
+agr variable ko declare kye bgair he usko initialize krny sy phly he access kry gy  tu ye error dy ga
+=>Scenario 1:
+console.log(a);   //a is not defined
+a = "Web Developer";
+
+=>Scenario 2:
+a = "Web Developer";
+console.log(a);   //ab a ko humny declare ni kya but us ko initialize krny k bad usko access kya tu by default ye a ki datatype var rkh dy ga and we can access it,but  remember after initialization
+
+
 let cases:
 Case 1:
 console.log(a); //it gives reference error here

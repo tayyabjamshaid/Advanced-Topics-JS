@@ -1,27 +1,46 @@
-// DataTypes : Variable  me jo data Hai,wo kis category ka ha like string ha,null ha etc us category ko dataTypes kehty ha
-// Example:
-// let a = "Harry"  yaha is ki datatype string ha
-// let b = 7  yaha is ki datatype number ha
+DataTypes : Variable  me jo data Hai,wo kis category ka ha like string ha,null ha etc us category ko dataTypes kehty ha
+ Example:
+ let a = "Harry"  yaha is ki datatype string ha
+ let b = 7  yaha is ki datatype number ha
 
-// 2 types of DataTypes
+ 2 types of DataTypes
 
-//1- Primitive Data Types
-//2- Objects(non primitive datatype)
+1- Primitive Data Types
+2- Objects(non primitive datatype)
 
-//1- Primitive Data Types
-// primitive Data types wo data types huty hain jo javaScript me build in huty hain
-// In JS, there are 7 primitive types
-//nn bb ss u
-//null number boolean bigInt string symbol undefined
+1- Primitive Data Types
+ primitive Data types wo data types huty hain jo javaScript me build in huty hain
+ In JS, there are 7 primitive types
+nn bb ss u
+null number boolean bigInt string symbol undefined
 
-//2- Objects(non primitive datatype)
-//Object(non primitive datatype) is a  collection of data with key value pairs
+-------------------
+Note:
+jab hum kisi Variable ko null dty ha and then uski datatype check krty ha tu wo null datatype dny ki bjaiy object dta ha for Example
+let data = null;
+console.log(typeof data);  //object 
+aisa is lye kyu k js k owner Brendan Eich ny is k mutaliq confess kya tha k yaha pr hum sy galti hu gai ha
+-------------------------
+2- Non primitive datatype(also known as refernce datatype)
+
+note:
+why non primitive datatype also known as refernce datatype..?
+bcoz primitive dataTypes k pas apni khud ki values huti ha like let a=8; ab yaha a ki datatype ek number ha,jis k pas khud ki value ha while
+non primitive types k pas khud ki koi value ni huti blky in k pas refernce huta ha,is lye inhai refernce datatype b kaha jata ha
+
+In non primitive datatype,everything is object,either array,functions,objects  are also objects
+
+
+LET'S PROVE          EVERYTHING IS OBJECT IN JAVASCRIPT
+
+=>Object
+It is a  collection of data with key value pairs
 let data = {
   tayy: "ssasa",
   nm: 23,
 };
 console.log(data.nm);
-//   or
+   or
 let data2 = {
   "tayy": "ssasa",
   "nm": 23,
@@ -38,6 +57,47 @@ const data = {
 data["school"] = "the grammar";
 data.address = "Kashmir";
 console.log(data);
+
+=>Array
+a)
+let data = [99, 77, 88];
+let data2 = {
+  0: 99,
+  1: 77,
+  2: 88,
+};
+console.log(data);
+console.log(data2);
+
+Output:
+
+(3) [99, 77, 88]
+0:99
+1:77
+2:88
+length:3
+
+{0: 99, 1: 77, 2: 88}
+0:99
+1:77
+2:88
+
+As we see output,array b as a object ki trah he values rkh rhata ha,so thats why in js,array is also a object
+b)let data=[];
+console.log(typeof data) //object
+
+=>Function
+jab hum koi function bnaty ha and then uski datatype check krty ha tu wo object dny ki bjaiy function datatype return krta ha for Example
+const data = () => {
+  console.log("hi");
+};
+
+data.newVariable = "tayyab";
+console.log(data.newVariable);//tayyab
+console.log(typeof data);  //function 
+
+chahy hamai function ki datatype function he show kr rha ha but hum phr b isy object he kahay gy kyu k hum is me object ki trah properties add krwa skty ha
+
 
 ------------------
 note 
@@ -57,3 +117,70 @@ let d=true
 console.log(x == y); returns false bcoz ab in ki value equal ni ha according to js
 console.log(b == d); returns false bcoz ab in ki value equal ni ha according to js
 
+----------------------------------------------------------------------------------------------------------------------------------
+
+Pass by value(primitive) vs pass by reference(reference/non primitive)
+
+1-Pass by value (primitive)
+let a=9;
+let b=a;
+b=b+10;
+console.log(a)  //9
+console.log(b)  //19
+
+Is example sy ye pta lgta ha k a and b dono independent hain,agr hum ny b ki value me koi change kya tu a ko ussy koi farq ni pra 
+
+2-Pass by reference
+Example 1:
+let obj1 = {
+  amount1: 99,
+  amount2: 77,
+  amount3: 88,
+};
+let obj2 = obj1;
+obj2.amount3 = 55;
+
+console.log(obj);
+console.log(obj2);
+
+Output:
+{amount1: 99, amount2: 77, amount3: 55}
+ {amount1: 99, amount2: 77, amount3: 55}
+
+Is example sy ye pta lga k agr hum obj2 me kuch change kry gy tu obj1 me b wo changes a jai gi 
+Aisa is lye kyu k jab humny obj1  create kya tu us k andr ka data hamari memory me ja k store hu jata ha ,ab us ka data ka address/reference obj1 ko diya jata ha ,
+jab hum obj1 ko obj2 k equal krty ha k tu basically hum wo reference/address obj2 k sath b share kr rhy huty ha
+Ab agr obj1 us memory me kuch update krta ha,tu wo changes obj2 ko b mily gi kyu k dono objects k pas  us memory ka address/reference ha,same agr obj2 kuch change krta ha tu obj1 ko b changes mily gi
+
+Example 2:
+ let arr1 = [12, 11, 22];
+let arr2 = arr1;
+arr2.push(2);
+console.log(arr1); (4) [12, 11, 22, 2]
+console.log(arr2);(4) [12, 11, 22, 2]
+
+same logic implemented,push humny arr2 me kya but wo changes arr1 me b aai,is ki wajah ye ha k in dono k pas  data ka address ha,jo b us data me change kry ga,sab me wo
+changes reflect hu gi.
+
+Now,if we want,k arr2 me push krny sy arr1 me changes na hu tu use concat method
+ let arr1 = [12, 11, 22];
+let arr2 = [].concat(arr1);
+arr2.push(2);
+console.log(arr1); (4) [12, 11, 22]
+console.log(arr2);(4) [12, 11, 22, 2]
+
+
+Example 3:
+let likes = 100;
+let youTubeChanel = {
+  name: "Tayyab Jamshaid",
+  subscribers: 10000,
+};
+const checkStatus = (a, b) => {
+  a = 200;
+  b.subscribers = 20000;
+};
+checkStatus(likes, youTubeChanel);
+
+console.log(likes);    //100
+console.log(youTubeChanel.subscribers); //20000
